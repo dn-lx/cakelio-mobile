@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Cakelio",
+    "slug": "cakelio",
+    "version": "0.2.0",
+    "orientation": "portrait",
+    "scheme": "cakelio",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": { "supportsTablet": true, "bundleIdentifier": "de.cakelio.app" },
+    "android": { "package": "de.cakelio.app", "adaptiveIcon": { "backgroundColor": "#FFF8F2" } },
+    "plugins": ["expo-router"],
+    "experiments": { "typedRoutes": true }
+  }
+}
