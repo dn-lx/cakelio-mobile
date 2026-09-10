@@ -2,14 +2,16 @@ import { useRouter } from "expo-router";
 import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { CakePreview } from "../../src/components/CakePreview";
 import { Logo } from "../../src/components/Logo";
+import { useAuth } from "../../src/context/AuthContext";
 import { colors, radii } from "../../src/theme";
 
 const makers=[{name:"Mila Cake Atelier",meta:"Frankfurt · ★ 4.9",color:"#DFE7DD"},{name:"Studio Zucker",meta:"Offenbach · ★ 4.8",color:"#F1D2C7"},{name:"Little Whisk",meta:"Frankfurt · ★ 5.0",color:"#F6E4B5"}];
 
 export default function HomeScreen(){
   const router=useRouter();
+  const {userId}=useAuth();
   return <SafeAreaView style={styles.safe}><ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.page}>
-    <View style={styles.nav}><Logo/><TouchableOpacity style={styles.signIn}><Text style={styles.signInText}>Sign in</Text></TouchableOpacity></View>
+    <View style={styles.nav}><Logo/><TouchableOpacity style={styles.signIn} onPress={()=>router.push(userId?"/(tabs)/profile":"/auth")}><Text style={styles.signInText}>{userId?"Account":"Sign in"}</Text></TouchableOpacity></View>
     <View style={styles.hero}><Text style={styles.eyebrow}>CUSTOM CAKES, WITHOUT THE CHAOS</Text><Text style={styles.title}>Imagine it.\nShape it.\n<Text style={styles.accent}>Make it real.</Text></Text><Text style={styles.lead}>Create a clear cake design, discover a baker who can make it and keep the whole order in one place.</Text><TouchableOpacity style={styles.primary} onPress={()=>router.push("/studio")}><Text style={styles.primaryText}>Start designing</Text></TouchableOpacity></View>
     <View style={styles.previewCard}><View style={styles.previewHead}><Text style={styles.previewTitle}>Cakelio Studio</Text><Text style={styles.live}>LIVE PREVIEW</Text></View><CakePreview/><View style={styles.tags}><Text style={styles.tag}>20 cm</Text><Text style={styles.tag}>Chocolate</Text><Text style={styles.tag}>Floral</Text></View></View>
     <View style={styles.sectionHead}><View><Text style={styles.kicker}>NEAR YOU</Text><Text style={styles.sectionTitle}>Cake makers to explore</Text></View><TouchableOpacity onPress={()=>router.push("/(tabs)/bakers")}><Text style={styles.link}>See all</Text></TouchableOpacity></View>

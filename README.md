@@ -3,23 +3,19 @@
 Shared Android and iOS application for **Cakelio**.
 
 ## Stack
-- Expo SDK 57
-- React Native 0.86
-- Expo Router
-- TypeScript
+- Expo SDK 57 / React Native 0.86
+- Expo Router + TypeScript
+- Supabase Auth/Postgres/Storage
+- AsyncStorage-backed native auth sessions
 - EAS Build for Android/iOS
 
-## Product direction
-Customers can design cakes, discover matching bakers, request quotes and communicate. Service providers will manage profiles, capabilities, requests and orders from the same mobile codebase.
+## Supabase
+This app connects only to the dedicated Cakelio project (`wbqnctrvxohxwiaignhg`). Copy `.env.example` to `.env.local` and add the Cakelio publishable key. Never add a Supabase secret/service-role key to an Expo public environment variable.
 
-## Development
-```bash
-npm install
-npx expo start
-```
+## Current status
+- Guest Home/Bakers/Studio remain available
+- Customer/provider email signup and sign-in
+- Persistent native authentication
+- Profile screen reflects signed-in account type
 
-## Build
-Use EAS Build for native Android/iOS artifacts. GitHub Actions will be added as the build automation matures.
-
-## Status
-Phase 1: branded navigation + Cake Studio + discovery prototype.
+Production email-confirmation deep links will be configured with the Cakelio domain and Supabase redirect allow-list before store release.
