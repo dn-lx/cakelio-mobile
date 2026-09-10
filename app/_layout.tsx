@@ -6,7 +6,7 @@ import { colors } from "../src/theme";
 export default function RootLayout() {
   return (
     <AuthProvider>
-      <StatusBar style="dark" backgroundColor={colors.cream} />
+      <StatusBar style="dark" />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.cream } }} />
     </AuthProvider>
   );
